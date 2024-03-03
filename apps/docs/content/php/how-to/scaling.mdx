@@ -1,5 +1,5 @@
 ---
-title: How Zerops scales Go
+title: How Zerops scales PHP
 ---
 
 Zerops performs an automated scaling of hardware resources required to run your runtime application based on its usage. If the current use of your application does not require as much performance or disk space the auto scaling reduces the resources and thus reduces the costs. If your application is under heavy load or needs to store more data, then auto scaling increases the resources to make sure it runs smoothly.
@@ -8,7 +8,7 @@ Zerops performs an automated scaling of hardware resources required to run your 
 
 Vertical scaling means increasing or decreasing the hardware resources (CPU, RAM and disk) of a runtime container.
 
-Zerops scales Go containers automatically by raising or lowering the hardware resources of the containers. If your runtime service is in [highly available] mode, all containers are scaled individually. The vertical scaling of different hardware resources (CPU, RAM and disk) is also independent. For example if your application needs more CPU, Zerops will assign more CPU to the container and keep the RAM and disk unchanged.
+Zerops scales PHP containers automatically by raising or lowering the hardware resources of the containers. If your runtime service is in [highly available] mode, all containers are scaled individually. The vertical scaling of different hardware resources (CPU, RAM and disk) is also independent. For example if your application needs more CPU, Zerops will assign more CPU to the container and keep the RAM and disk unchanged.
 
 ### Automatic scale up
 
@@ -32,16 +32,16 @@ The *minimum step* for the vertical scaling is
 
 When the application is under a heavy load and needs to scale up faster, the scaling step will increase automatically.
 
-Maximal resources are defined for each Go service. Zerops will never scale above the entered values. If your application is in [highly available] mode, maximal resources are identical for all containers of the Go service.
+Maximal resources are defined for each PHP service. Zerops will never scale above the entered values. If your application is in [highly available] mode, maximal resources are identical for all containers of the PHP service.
 
 *Default maximal resources* are:
 * 20 vCPUs
 * 32 GB RAM
 * 100 GB disk
 
-If you need to limit the cost of the Go service, lower the maximal resources. You can set your own maximal resources when creating a Go service or you can change it later in Zerops GUI. Go to the Go service detail and choose **Automatic scaling configuration** in the left menu.
+If you need to limit the cost of the PHP service, lower the maximal resources. You can set your own maximal resources when creating a PHP service or you can change it later in Zerops GUI. Go to the PHP service detail and choose **Automatic scaling configuration** in the left menu.
 
-**// TODO screenshot (Go - Automatic scaling configuration form)**
+**// TODO screenshot (PHP - Automatic scaling configuration form)**
 
 :::caution
 Other configuration parameters of the scale up behaviour (scale up threshold, minimum step, etc.) are fixed and cannot be customised.
@@ -49,7 +49,7 @@ Other configuration parameters of the scale up behaviour (scale up threshold, mi
 
 ### Not enough resources to scale up
 
-If one of the Go containers needs more resources but there are not enough of them on the underlying machine, a new container with the required hardware resources will be started on another machine. When the new container is ready, it will be added to the service balancer. The old container will be removed from the balancer and deleted.
+If one of the PHP containers needs more resources but there are not enough of them on the underlying machine, a new container with the required hardware resources will be started on another machine. When the new container is ready, it will be added to the service balancer. The old container will be removed from the balancer and deleted.
 
 ### Automatic scale down
 
@@ -68,10 +68,10 @@ Zerops will never scale below the defined minimal resources. *Default minimal re
 * 0.25 GB RAM
 * 1 GB disk
 
-Minimal resources are identical for all containers of the Go service.
+Minimal resources are identical for all containers of the PHP service.
 
 :::tip
-When you are experiencing problems with insufficient Go performance or capacity, increase the minimal resources. You can set your own minimal resources when creating a Go service or you can change it later in Zerops GUI. Go to the Go service detail and choose **Automatic scaling configuration** in the left menu.
+When you are experiencing problems with insufficient PHP performance or capacity, increase the minimal resources. You can set your own minimal resources when creating a PHP service or you can change it later in Zerops GUI. Go to the PHP service detail and choose **Automatic scaling configuration** in the left menu.
 :::
 
 :::caution
@@ -80,11 +80,11 @@ Other configuration parameters of the scale down behaviour (scale up threshold, 
 
 ### How to disable vertical auto scaling
 
-To disable the vertical auto scaling of vCPU, RAM or disk, set the minimal and maximal resources to the same value. Zerops will set the required amount of resources to all Go containers and the auto scaling of the selected resource will be disabled. You can disable the auto scaling of a resource (e.g. RAM) and keep auto scaling of other resources enabled.
+To disable the vertical auto scaling of vCPU, RAM or disk, set the minimal and maximal resources to the same value. Zerops will set the required amount of resources to all PHP containers and the auto scaling of the selected resource will be disabled. You can disable the auto scaling of a resource (e.g. RAM) and keep auto scaling of other resources enabled.
 
 ## Horizontal scaling
 
-Horizontal scaling means adding or removing whole containers. When creating a new Go service, you can choose the minimum and maximum number of containers. You can change the settings anytime in Zerops GUI. Go to the Go service detail and choose **Automatic scaling configuration** in the left menu.
+Horizontal scaling means adding or removing whole containers. When creating a new PHP service, you can choose the minimum and maximum number of containers. You can change the settings anytime in Zerops GUI. Go to the PHP service detail and choose **Automatic scaling configuration** in the left menu.
 
 **// TODO screenshot (automatic scaling configuration of a runtime service)**
 
@@ -111,7 +111,7 @@ Each container of the same service is strictly installed on a different server. 
 You can keep the minimum at 1 container, but you should do so with caution and only for non-critical or dev services. Production grade service should start with at least 2 containers.
 :::
 
-Zerops prefers [vertical scaling] over horizontal scaling because vertical scaling is faster and allows finer adjustment to the required performance. Horizontal scaling can be disabled by setting the same number for the minimum and maximum container count. Zerops will then scale the Go service only vertically.
+Zerops prefers [vertical scaling] over horizontal scaling because vertical scaling is faster and allows finer adjustment to the required performance. Horizontal scaling can be disabled by setting the same number for the minimum and maximum container count. Zerops will then scale the PHP service only vertically.
 
 Your application is created with the defined minimum number of containers. Zerops will add a new container when any of the service's containers reaches the maximum limit for vertical scaling for vCPU or RAM. Zerops doesn't start a new container when the maximum disk space is reached. No more containers are added when the defined maximum container limit is reached.
 
@@ -121,7 +121,7 @@ By customising the vertical auto scaling limits, you can cause the horizontal sc
 
 If the application no longer needs as much power, Zerops will gradually remove containers to the defined minimum count. The container is removed after its vCPU is scaled down to the defined minimum and the free vCPU is safely above the minimum threshold for vertical scaling. Zerops only removes containers with a minimum 15 minute lifetime.
 
-## Monitor Go resources
+## Monitor PHP resources
 
-Zerops provides information about how much hardware resources the Go service is currently using. Go to the service detail in Zerops GUI and select **Service dashboard & runtime containers** in the left menu. Zerops also provides the history of resource usage.
+Zerops provides information about how much hardware resources the PHP service is currently using. Go to the service detail in Zerops GUI and select **Service dashboard & runtime containers** in the left menu. Zerops also provides the history of resource usage.
 

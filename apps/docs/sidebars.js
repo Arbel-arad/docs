@@ -856,9 +856,6 @@ module.exports = {
           type: "doc",
           id: "php/how-to/scaling",
           label: "Scale PHP runtime service",
-          customProps: {
-            sidebar_is_soon: true,
-          }
         },
         {
           type: "doc",
