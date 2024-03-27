@@ -791,6 +791,22 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Quick Start",
+      collapsible: false,
+      customProps: {
+        sidebar_is_group_headline: true,
+        sidebar_icon: "rocket-launch",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "php/quickstart",
+          label: "Sample application",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "How-to",
       collapsible: false,
       customProps: {
@@ -911,6 +927,22 @@ module.exports = {
         sidebar_is_title: true,
         sidebar_icon: "python",
       },
+    },
+    {
+      type: "category",
+      label: "Quick Start",
+      collapsible: false,
+      customProps: {
+        sidebar_is_group_headline: true,
+        sidebar_icon: "rocket-launch",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "python/quickstart",
+          label: "Sample application",
+        },
+      ],
     },
     {
       type: "category",
@@ -1037,6 +1069,22 @@ module.exports = {
     },
     {
       type: "category",
+      label: "Quick Start",
+      collapsible: false,
+      customProps: {
+        sidebar_is_group_headline: true,
+        sidebar_icon: "rocket-launch",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "go/quickstart",
+          label: "Sample application",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "How-to",
       collapsible: false,
       customProps: {
@@ -1157,6 +1205,22 @@ module.exports = {
         sidebar_is_title: true,
         sidebar_icon: "rust",
       },
+    },
+    {
+      type: "category",
+      label: "Quick Start",
+      collapsible: false,
+      customProps: {
+        sidebar_is_group_headline: true,
+        sidebar_icon: "rocket-launch",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "rust/quickstart",
+          label: "Sample application",
+        },
+      ],
     },
     {
       type: "category",
@@ -1283,6 +1347,22 @@ module.exports = {
         sidebar_is_title: true,
         sidebar_icon: "dotnet",
       },
+    },
+    {
+      type: "category",
+      label: "Quick Start",
+      collapsible: false,
+      customProps: {
+        sidebar_is_group_headline: true,
+        sidebar_icon: "rocket-launch",
+      },
+      items: [
+        {
+          type: "doc",
+          id: "dotnet/quickstart",
+          label: "Sample application",
+        },
+      ],
     },
     {
       type: "category",
